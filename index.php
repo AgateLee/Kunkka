@@ -43,7 +43,7 @@
                         </ul>
                     </div>
                     <div class="post-body">
-                        <?php if ( $full_content ) {
+                        <?php if ( $full_content || is_sticky()) {
                             the_content();
                         } else {
                             if ( $post_thumbnail["exist"] ) : ?>
