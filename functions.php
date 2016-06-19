@@ -110,3 +110,90 @@ if ( function_exists( 'register_sidebar' ) ) {
  * Register theme languages files
  */
 load_theme_textdomain( MUTHEME_NAME, mutheme_path( 'languages' ) );
+
+/**
+ * Plugin Name: Add Custom Smilies
+ * Plugin URI: http://zhuli.me/2012/05/04/add-custom-smilies-to-wordpress.html
+ * Description: Add More Smilies to your WP.
+ * Version: 0.0.1
+ * Author: Leigh
+ * Author URI: http://zhuli.me/
+ */
+function evolz_smilies_init() {
+    global $wpsmiliestrans, $wp_smiliessearch, $wp_smiliesreplace;
+
+    // don't bother setting up smilies if they are disabled
+    if ( !get_option( 'use_smilies' ) )
+        return;
+
+    if ( !isset( $wpsmiliestrans ) ) {
+        $wpsmiliestrans = array(
+                ':mrgreen:' => 'icon_mrgreen.png',
+                ':neutral:' => 'icon_neutral.png',
+                ':twisted:' => 'icon_twisted.png',
+                  ':arrow:' => 'icon_arrow.png',
+                  ':shock:' => 'icon_eek.png',
+                  ':smile:' => 'icon_smile.png',
+                    ':???:' => 'icon_confused.png',
+                   ':cool:' => 'icon_cool.png',
+                   ':evil:' => 'icon_evil.png',
+                   ':grin:' => 'icon_biggrin.png',
+                   ':idea:' => 'icon_idea.png',
+                   ':oops:' => 'icon_redface.png',
+                   ':razz:' => 'icon_razz.png',
+                   ':roll:' => 'icon_rolleyes.png',
+                   ':wink:' => 'icon_wink.png',
+                    ':cry:' => 'icon_cry.png',
+                    ':eek:' => 'icon_surprised.png',
+                    ':lol:' => 'icon_lol.png',
+                    ':mad:' => 'icon_mad.png',
+                    ':sad:' => 'icon_sad.png',
+                      '8-)' => 'icon_cool.png',
+                      '8-O' => 'icon_eek.png',
+                      ':-(' => 'icon_sad.png',
+                      ':-)' => 'icon_smile.png',
+                      ':-?' => 'icon_confused.png',
+                      ':-D' => 'icon_biggrin.png',
+                      ':-P' => 'icon_razz.png',
+                      ':-o' => 'icon_surprised.png',
+                      ':-x' => 'icon_mad.png',
+                      ':-|' => 'icon_neutral.png',
+                      ';-)' => 'icon_wink.png',
+                       //'8)' => 'icon_cool.png',
+                       //'8O' => 'icon_eek.png',
+                       ':(' => 'icon_sad.png',
+                       ':)' => 'icon_smile.png',
+                       ':?' => 'icon_confused.png',
+                       ':D' => 'icon_biggrin.png',
+                       ':P' => 'icon_razz.png',
+                       ':o' => 'icon_surprised.png',
+                       ':x' => 'icon_mad.png',
+                       ':|' => 'icon_neutral.png',
+                       ';)' => 'icon_wink.png',
+                      ':!:' => 'icon_exclaim.png',
+                      ':?:' => 'icon_question.png',
+        );
+    }
+    $siteurl = get_option( 'siteurl' );
+    foreach ( (array) $wpsmiliestrans as $smiley => $img ) {
+    $wp_smiliessearch[] = '/(\s|^)' . preg_quote( $smiley, '/' ) . '(\s|$)/';
+    $smiley_masked = attribute_escape( trim( $smiley ) );
+    $wp_smiliesreplace[] = " <img src='$siteurl/wp-content/themes/Kunkka/smiley/$img' alt='$smiley_masked' class='wp-smiley' /> ";
+    }
+}
+
+remove_action('init', 'smilies_init', 5);
+add_action('init', 'evolz_smilies_init', 5);
+
+/**
+ * Plugin Name: Custom Smilies Src
+ * Plugin URI: http://fairyfish.net/m/custom_smilies_src/
+ * Description: Custome Smiles Src
+ * Version: 0.1
+ * Author: Denis
+ * Author URI: http://fairyfish.net/
+ */
+add_filter('smilies_src','custom_smilies_src',1,10);
+function custom_smilies_src ($img_src, $img, $siteurl){
+    return $siteurl.'/wp-content/themes/Kunkka/smiley/'.$img;
+}

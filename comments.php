@@ -84,8 +84,20 @@
 				<textarea name="comment" id="comment" class="textarea" rows="4" tabindex="4"
 				          onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
 			</div>
-			<p><input id="submit" type="submit" name="submit" value="<?php _e( 'Submit / Ctrl+Enter', MUTHEME_NAME ); ?>"
-			          class="submit"/></p>
+			<div class="dropdown" style="display:inline-block;">
+                <span class="fa fa-smile-o fa-lg icon-smile"></span>
+
+                <div class="dropdown-arrow1"></div>
+                <div class="dropdown-arrow2"></div>
+                <div class="submenu" style="width:18em">
+                    <div class="tab-content">
+                        <?php include(TEMPLATEPATH . '/smiley.php'); ?>
+                    </div>
+                </div>
+            </div>
+            <div style="display:inline-block;float:right">
+                <input id="submit" type="submit" name="submit" value="<?php _e( 'Submit / Ctrl+Enter', MUTHEME_NAME ); ?>" class="submit"/>
+            </div>
 			<?php comment_id_fields(); ?>
 			<?php do_action( 'comment_form', $post->ID ); ?>
 			</form>
