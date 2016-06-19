@@ -23,7 +23,7 @@ get_header(); ?>
     </style>
     <script type="text/javascript">  
     //设定倒数秒数  
-    var t = 24;  
+    var t = 16;  
     //显示倒数秒数  
     function showTime(){  
         t -= 1;  
