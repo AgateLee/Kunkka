@@ -39,4 +39,5 @@
 * 增加了友情链接页面
 * 增加了关于页面
 * 重新设计了404页面
-  ![](public/images/404.png)
+
+![](public/images/404.png)
