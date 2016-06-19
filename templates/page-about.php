@@ -11,23 +11,23 @@ get_header(); ?>
             <br>
             <div class="aboutDiv">
             <span>
-                <a href="https://github.com/AgateLee" target="_blank"><i class="fa fa-github fa-2x icon-github"></i></a>&nbsp;&nbsp;
-                <a href="http://weibo.com/agatelee/" target="_blank"><i class="fa fa-weibo fa-2x icon-weibo"></i></a>&nbsp;&nbsp;
+                <a href="https://github.com/AgateLee" target="_blank"><i class="fa fa-github fa-2x icon-github" onclick=""></i></a>&nbsp;&nbsp;
+                <a href="http://weibo.com/agatelee/" target="_blank"><i class="fa fa-weibo fa-2x icon-weibo" onclick=""></i></a>&nbsp;&nbsp;
                 <span class="weixin">
                     <span class="weixin_box">
-                        <span class="fa fa-weixin fa-2x icon-weixin">
+                        <span class="fa fa-weixin fa-2x icon-weixin" onclick="">
                             <div class="weixin_pic">
                                 <img src="http://agatelee.cn/wp-content/uploads/2016/06/weixin.png">
                             </div>
                         </span>
                     </span>
                 </span>&nbsp;&nbsp;
-                <a href="mailto:liyi5133@126.com"><i class="fa fa-envelope fa-2x icon-mail"></i></a>
+                <a href="mailto:liyi5133@126.com"><i class="fa fa-envelope fa-2x icon-mail" onclick=""></i></a>
             </span>
             </div>
             <div class="aboutDiv">
-                <pre class="hollow">北京邮电大学在读</pre>
-                <pre class="hollow">文档&nbsp;美工&nbsp;程序员</pre>
+                <pre class="hollow" onclick="">北京邮电大学在读</pre>
+                <pre class="hollow" onclick="">文档&nbsp;美工&nbsp;程序员</pre>
             </div>
                 
         </div>
@@ -115,4 +115,5 @@ get_header(); ?>
         display: none;
     }
     </style>
+
 <?php get_footer(); ?>

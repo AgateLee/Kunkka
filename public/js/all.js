@@ -19,11 +19,14 @@ typeof window.navigator?window.navigator.userAgent:"")})();
 jQuery(document).ready(function ($) {
     $('img.lazy,img.avatar').lazyload();
 
-    if( bowser.mobile ){
-        $('.mobile-menu-button').on('touchstart', function (event) {
+    //if( bowser.mobile ){
+        //$('.mobile-menu-button').on('touchstart', function (event) {
+        //    $('body').hasClass('mobile-menu-open') ? $('body').removeClass('mobile-menu-open') : $('body').addClass('mobile-menu-open');
+        //});
+        $('.mobile-menu-button').on('click', function (event) {
             $('body').hasClass('mobile-menu-open') ? $('body').removeClass('mobile-menu-open') : $('body').addClass('mobile-menu-open');
         });
-    }else{
+    //}else{
         var hstatus = false,
             htimer;
 
@@ -53,6 +56,7 @@ jQuery(document).ready(function ($) {
                 }, 100);
             }
         });
-    }
+    //}
+
 
 });
