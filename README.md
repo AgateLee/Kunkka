@@ -41,11 +41,10 @@
 * 自定义表情支持，评论添加表情选择
 * 修改了all.js，扩展了drop-down的适用范围，解决了下列问题：
   * 手机上点击评论表情dropdown无法弹出问题
-* 修改了all.js,将mobile-menu的逻辑从touchstart换为click，同时扩展适用范围，解决了下列问题：
+* 修改了all.js,将mobile-menu的逻辑从touchstart换为click，同时扩展适用范围，这些问题都是由于桌面浏览器的判定造成的
   * ipadmini2纵向放置出现了mobile-menu但是无法触发
   * 桌面浏览器缩小窗口出现了mobile-menu但是无法出发
-  这些问题都是由于桌面浏览器的判定造成的
-* 增加了关于页面的fontawsome逻辑，添加了空onclick，使得IOS移动设备可以触发hover事件，如显示微信二维码
+* 关于页面的fontawsome添加了空onclick，使得IOS移动设备可以触发hover事件，如显示微信二维码
 
 
 **2016-06-18**
