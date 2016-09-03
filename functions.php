@@ -197,3 +197,39 @@ add_filter('smilies_src','custom_smilies_src',1,10);
 function custom_smilies_src ($img_src, $img, $siteurl){
     return $siteurl.'/wp-content/themes/Kunkka/smiley/'.$img;
 }
+
+//替换Gavatar头像地址
+function get_ssl_avatar($avatar) {
+    if (preg_match_all(
+        '/(src|srcset)=["\']https?.*?\/avatar\/([^?]*)\?s=([\d]+)&([^"\']*)?["\']/i',
+        $avatar,
+        $matches
+    ) > 0) {
+        $url = 'https://secure.gravatar.com';
+        $size = $matches[3][0];
+        $vargs = array_pad(array(), count($matches[0]), array());
+        for ($i = 1; $i < count($matches); $i++) {
+            for ($j = 0; $j < count($matches[$i]); $j++) {
+                $tmp = strtolower($matches[$i][$j]);
+                $vargs[$j][] = $tmp;
+                if ($tmp == 'src') {
+                    $size = $matches[3][$j];
+                }
+            }
+        }
+        $buffers = array();
+        foreach ($vargs as $varg) {
+            $buffers[] = vsprintf(
+            '%s="%s/avatar/%s?s=%s&%s"',
+            array($varg[0], $url, $varg[1], $varg[2], $varg[3])
+           );
+        }
+        return sprintf(
+                '<img alt="avatar" %s class="avatar avatar-%s" height="%s" width="%s" />',
+                implode(' ', $buffers), $size, $size, $size
+            );
+    } else {
+        return false;
+    }
+}
+add_filter('get_avatar', 'get_ssl_avatar');
